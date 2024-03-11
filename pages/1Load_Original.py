@@ -44,7 +44,7 @@ def app():
         st.session_state.image_data = data
         st.write(data.shape)
 
-        plot_pixels(data, title= 'Input color space: 16 million possible colors')
+        #plot_pixels(data, title= 'Input color space: 16 million possible colors')
 
 
 def plot_pixels(data, title, colors=None, N=1000):

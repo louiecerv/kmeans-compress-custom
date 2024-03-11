@@ -14,7 +14,7 @@ def app():
 
     new_colors = kmeans.cluster_centers_[kmeans.predict(data)]
 
-    plot_pixels(data, 'Reduced color space: 16 colors', new_colors)
+    #plot_pixels(data, 'Reduced color space: 16 colors', new_colors)
 
     img_recolored = new_colors.reshape(data.shape)
 
@@ -39,7 +39,14 @@ def app():
     memory_size = width * height * bpp // 8
 
     st.write('original size =' + str(memory_size))
-    
+
+    fig, ax = plt.subplots()
+    # Remove ticks from both axes
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.imshow(img_recolored)
+    st.pyplot(fig)
+
     #compression = round(reduced_size/orig_size, 2)
     #print(f'image size is reduce to {compression} of the original image.')
 
