@@ -18,7 +18,7 @@ def app():
         image = image.convert('RGB') if image.mode != 'RGB' else image
 
         # Display the image with an informative caption
-        st.image(image, caption="Uploaded Image", use_column_width=True)
+        #st.image(image, caption="Uploaded Image", use_column_width=True)
 
         original_image = np.array(image)
 
@@ -28,6 +28,13 @@ def app():
         ax.set_yticks([])
         ax.imshow(original_image)
         st.pyplot(fig)
+
+        # Get dimensions of the image
+        height, width, channels = original_image.shape
+
+        data = original_image/255.0
+        data = data.reshape(height * width, 3)
+        st.write(data.shape)
 
 #run the app
 if __name__ == "__main__":
