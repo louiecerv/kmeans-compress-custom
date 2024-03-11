@@ -20,14 +20,14 @@ def app():
         # Display the image with an informative caption
         st.image(image, caption="Uploaded Image", use_column_width=True)
 
-    original_image = np.array(image)
-    original_image = np.expand_dims(original_image, axis=2)
-    fig, ax = plt.subplots()
-    # Remove ticks from both axes
-    ax.set_xticks([])
-    ax.set_yticks([])
-    ax.imshow(original_image)
-    st.pyplot(fig)
+        original_image = np.array(image)
+        original_image = np.expand_dims(original_image, axis=2)
+        fig, ax = plt.subplots()
+        # Remove ticks from both axes
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.imshow(original_image)
+        st.pyplot(fig)
 
 #run the app
 if __name__ == "__main__":
