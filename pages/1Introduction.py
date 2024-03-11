@@ -14,6 +14,9 @@ def app():
     if uploaded_file is not None:
         # Read the uploaded image
         image = Image.open(uploaded_file)
+        # Convert to RGB format (if necessary) for compatibility with st.image
+        image = image.convert('RGB') if image.mode != 'RGB' else image
+        
         # Display the image with an informative caption
         st.image(image, caption="Uploaded Image", use_column_width=True)
 
