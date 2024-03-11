@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from PIL import Image
 
 # Define the Streamlit app
 def app():
@@ -12,12 +12,12 @@ def app():
     st.subheader('Upload an image for the compression task.')
     uploaded_file = st.file_uploader("Upload Image", type=["jpg", "png"])
     if uploaded_file is not None:
-        # Convert uploaded file to bytes
-        image_bytes = uploaded_file.read()
-        # Display uploaded image
-        st.image(image_bytes, caption="Uploaded Image")
+        # Read the uploaded image
+        image = Image.open(uploaded_file)
+        # Display the image with an informative caption
+        st.image(image, caption="Uploaded Image", use_column_width=True)
 
-    original_image = np.array(image_bytes)
+    original_image = np.array(image)
 
     fig, ax = plt.subplots()
     # Remove ticks from both axes
