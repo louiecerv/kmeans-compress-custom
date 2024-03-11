@@ -8,7 +8,7 @@ from PIL import Image
 
 # Define the Streamlit app
 def app():
-    image_bytes = 0
+    image = []
     st.subheader('Upload an image for the compression task.')
     uploaded_file = st.file_uploader("Upload Image", type=["jpg", "png"])
     if uploaded_file is not None:
