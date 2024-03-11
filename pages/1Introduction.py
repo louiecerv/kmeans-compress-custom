@@ -19,7 +19,10 @@ def app():
 
     original_image = np.array(image_bytes)
 
-    fig, ax = plt.axes(xticks=[], yticks=[])
+    fig, ax = plt.subplots()
+    # Remove ticks from both axes
+    ax.set_xticks([])
+    ax.set_yticks([])
     ax.imshow(original_image)
     st.pyplot(fig)
 
