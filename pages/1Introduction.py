@@ -16,12 +16,12 @@ def app():
         image = Image.open(uploaded_file)
         # Convert to RGB format (if necessary) for compatibility with st.image
         image = image.convert('RGB') if image.mode != 'RGB' else image
-        
+
         # Display the image with an informative caption
         st.image(image, caption="Uploaded Image", use_column_width=True)
 
     original_image = np.array(image)
-
+    original_image = np.expand_dims(original_image, axis=2)
     fig, ax = plt.subplots()
     # Remove ticks from both axes
     ax.set_xticks([])
