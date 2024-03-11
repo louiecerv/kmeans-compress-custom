@@ -6,9 +6,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from PIL import Image
 
+
 # Define the Streamlit app
 def app():
     image = []
+
+    if "original" not in st.session_state:
+        st.session_state.original = []
+    if "image_data" not in st.session_state:
+        st.session_state.image_data = []
+
     st.subheader('Upload an image for the compression task.')
     uploaded_file = st.file_uploader("Upload Image", type=["jpg", "png"])
     if uploaded_file is not None:
@@ -16,7 +23,7 @@ def app():
         image = Image.open(uploaded_file)
         # Convert to RGB format (if necessary) for compatibility with st.image
         image = image.convert('RGB') if image.mode != 'RGB' else image
-
+        st.session_state.original = image
         # Display the image with an informative caption
         #st.image(image, caption="Uploaded Image", use_column_width=True)
 
@@ -34,6 +41,7 @@ def app():
 
         data = original_image/255.0
         data = data.reshape(height * width, 3)
+        st.session_state.image_data = data
         st.write(data.shape)
 
         plot_pixels(data, title= 'Input color space: 16 million possible colors')
