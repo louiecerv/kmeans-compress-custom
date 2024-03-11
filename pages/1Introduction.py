@@ -36,6 +36,26 @@ def app():
         data = data.reshape(height * width, 3)
         st.write(data.shape)
 
+        plot_pixels(data, title= 'Input color space: 16 million possible colors')
+
+
+def plot_pixels(data, title, colors=None, N=1000):
+    if colors is None:
+        colors = data
+
+        rng = np.random.RandomState(0)
+        i = rng.permutation(data.shape[0])[:N]
+        colors = colors[i]
+        R, G, B = data[i].T
+
+        fig, ax = plt.subplots(1, 2, figsize=(16, 6))
+        ax[0].scatter(R, G, color=colors, marker='.')
+        ax[0].set(xlabel='red', ylabel='green', xlim=(0, 1), ylim=(0, 1))
+        ax[1].scatter(R, B, color=colors, marker='.')
+        ax[1].set(xlabel='red', ylabel='blue', xlim=(0, 1), ylim=(0, 1))  
+        fig.suptitle(title, size=20)
+        st.pyplot(fig)
+
 #run the app
 if __name__ == "__main__":
     app()
