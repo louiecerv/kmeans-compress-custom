@@ -47,8 +47,7 @@ def app():
         Overall color representation: The dominant colors in the original 
         image will likely be preserved, but finer color nuances 
         will be sacrificed."""
-    st.write(text)
-    st.write('Image reduction result in some lost datils. But the original.')
+        st.write(text)    
     fig, ax = plt.subplots()
     # Remove ticks from both axes
     ax.set_xticks([])
