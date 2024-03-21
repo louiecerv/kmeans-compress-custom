@@ -44,6 +44,8 @@ def app():
     st.write('original size =' + str(memory_size))
 
     #display the compressed image
+    
+    st.subheader('The compressed image')
     fig, ax = plt.subplots()
     # Remove ticks from both axes
     ax.set_xticks([])
