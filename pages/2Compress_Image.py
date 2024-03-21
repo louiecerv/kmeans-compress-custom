@@ -22,7 +22,7 @@ def app():
 
     #convert the array to an image
     img_recolored = new_colors.reshape(original_data.shape)
-    reduced_img = Image.fromarray(img_recolored)
+    reduced_img = Image.fromarray(new_colors)
 
     fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
     fig.subplots_adjust(wspace=0.05)
