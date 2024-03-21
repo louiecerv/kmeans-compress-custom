@@ -8,7 +8,11 @@ from sklearn.cluster import MiniBatchKMeans
 
 # Define the Streamlit app
 def app():
+    #data is the normalized array of the original image
     data = st.session_state.image_data
+
+    original = st.session_state.original
+
     kmeans = MiniBatchKMeans(16)
     kmeans.fit(data)
 
@@ -16,6 +20,7 @@ def app():
 
     #plot_pixels(data, 'Reduced color space: 16 colors', new_colors)
 
+    #convert the array to an image
     img_recolored = new_colors.reshape(data.shape)
 
     fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
@@ -27,9 +32,9 @@ def app():
     st.pyplot(fig)
 
     #show the compression ratio
-    width, height = data.size
+    width, height = original.size
     # Get mode (e.g., RGB, RGBA) and corresponding bytes per pixel
-    mode = data.mode
+    mode = original.mode
     bpp = {
         '1': 1, 'L': 8, 'P': 8, 'RGB': 24, 'RGBA': 32, 'CMYK': 32, 'YCbCr': 24, 'I': 32, 'F': 32
     }[mode]
@@ -39,6 +44,7 @@ def app():
 
     st.write('original size =' + str(memory_size))
 
+    #display the compressed image
     fig, ax = plt.subplots()
     # Remove ticks from both axes
     ax.set_xticks([])
