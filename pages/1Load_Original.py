@@ -21,11 +21,11 @@ def app():
     if uploaded_file is not None:
         # Read the uploaded image
         image = Image.open(uploaded_file)
+
         # Convert to RGB format (if necessary) for compatibility with st.image
         image = image.convert('RGB') if image.mode != 'RGB' else image
         st.session_state.original = image
-        # Display the image with an informative caption
-        #st.image(image, caption="Uploaded Image", use_column_width=True)
+
 
         original_image = np.array(image)
 
@@ -39,13 +39,13 @@ def app():
         # Get dimensions of the image
         height, width, channels = original_image.shape
 
+        # Normalize the data
         data = original_image/255.0
         data = data.reshape(height * width, 3)
         st.session_state.image_data = data
         st.write(data.shape)
 
-        #plot_pixels(data, title= 'Input color space: 16 million possible colors')
-
+        plot_pixels(data, "Plot of the Data")
 
 def plot_pixels(data, title, colors=None, N=1000):
     if colors is None:
