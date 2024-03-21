@@ -36,6 +36,7 @@ def app():
     width, height = original.size
     # Get mode (e.g., RGB, RGBA) and corresponding bytes per pixel
     mode = original.mode
+    st.write(mode)
     bpp = {
         '1': 1, 'L': 8, 'P': 8, 'RGB': 24, 'RGBA': 32, 'CMYK': 32, 'YCbCr': 24, 'I': 32, 'F': 32
     }[mode]
@@ -45,6 +46,7 @@ def app():
     
     width, height = reduced_img.size
     mode = reduced_img.mode
+    st.write(mode)
     bpp = {
         '1': 1, 'L': 8, 'P': 8, 'RGB': 24, 'RGBA': 32, 'CMYK': 32, 'YCbCr': 24, 'I': 32, 'F': 32
     }[mode]
