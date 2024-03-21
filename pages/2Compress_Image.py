@@ -18,7 +18,7 @@ def app():
 
     new_colors = kmeans.cluster_centers_[kmeans.predict(normalized_data)]
 
-    #plot_pixels(data, 'Reduced color space: 16 colors', new_colors)
+    plot_pixels(normalized_data, 'Reduced color space: 16 colors', new_colors)
 
     #convert the array to an image
     img_recolored = new_colors.reshape(original_data.shape)
