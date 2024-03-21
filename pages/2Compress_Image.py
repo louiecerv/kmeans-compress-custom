@@ -5,6 +5,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.cluster import MiniBatchKMeans
+from PIL import Image
 
 # Define the Streamlit app
 def app():
@@ -21,6 +22,7 @@ def app():
 
     #convert the array to an image
     img_recolored = new_colors.reshape(original_data.shape)
+    reduced_img = Image.fromarray(img_recolored)
 
     fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
     fig.subplots_adjust(wspace=0.05)
@@ -40,10 +42,9 @@ def app():
     # Calculate the total number of bytes in memory
     orig_size = width * height * bpp // 8
     st.write('original size =' + str(orig_size))
-
-    #display the compressed image
-    width, height = img_recolored.size
-    mode = img_recolored.mode
+    
+    width, height = reduced_img.size
+    mode = reduced_img.mode
     bpp = {
         '1': 1, 'L': 8, 'P': 8, 'RGB': 24, 'RGBA': 32, 'CMYK': 32, 'YCbCr': 24, 'I': 32, 'F': 32
     }[mode]
