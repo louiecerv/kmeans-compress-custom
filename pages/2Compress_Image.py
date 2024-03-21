@@ -13,9 +13,9 @@ def app():
     normalized_data = st.session_state.normalized_data
 
     kmeans = MiniBatchKMeans(16)
-    kmeans.fit(original_data)
+    kmeans.fit(normalized_data)
 
-    new_colors = kmeans.cluster_centers_[kmeans.predict(original_data)]
+    new_colors = kmeans.cluster_centers_[kmeans.predict(normalized_data)]
 
     #plot_pixels(data, 'Reduced color space: 16 colors', new_colors)
 
