@@ -45,7 +45,7 @@ def app():
         st.session_state.image_data = data
         st.write(data.shape)
 
-        plot_pixels(data, "Plot of the Data")
+        plot_pixels(data, "Plot of the Image Pixels")
 
 def plot_pixels(data, title, colors=None, N=1000):
     if colors is None:
@@ -59,6 +59,7 @@ def plot_pixels(data, title, colors=None, N=1000):
         fig, ax = plt.subplots(1, 2, figsize=(16, 6))
         ax[0].scatter(R, G, color=colors, marker='.')
         ax[0].set(xlabel='red', ylabel='green', xlim=(0, 1), ylim=(0, 1))
+        
         ax[1].scatter(R, B, color=colors, marker='.')
         ax[1].set(xlabel='red', ylabel='blue', xlim=(0, 1), ylim=(0, 1))  
         fig.suptitle(title, size=20)
