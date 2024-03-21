@@ -30,21 +30,29 @@ def app():
     ax[1].set_title('16-color image', size=16)
     st.pyplot(fig)
 
-    #show the compression ratio
+    
     width, height = original.size
     # Get mode (e.g., RGB, RGBA) and corresponding bytes per pixel
     mode = original.mode
     bpp = {
         '1': 1, 'L': 8, 'P': 8, 'RGB': 24, 'RGBA': 32, 'CMYK': 32, 'YCbCr': 24, 'I': 32, 'F': 32
     }[mode]
-
     # Calculate the total number of bytes in memory
-    memory_size = width * height * bpp // 8
-
-    st.write('original size =' + str(memory_size))
+    orig_size = width * height * bpp // 8
+    st.write('original size =' + str(orig_size))
 
     #display the compressed image
-    
+    width, height = img_recolored.size
+    mode = img_recolored.mode
+    bpp = {
+        '1': 1, 'L': 8, 'P': 8, 'RGB': 24, 'RGBA': 32, 'CMYK': 32, 'YCbCr': 24, 'I': 32, 'F': 32
+    }[mode]
+    reduced_size = width * height * bpp // 8
+    st.write('compressed size =' + str(reduced_size))
+
+    compression = round(reduced_size/orig_size, 2)
+    print(f'image size is reduce to {compression} of the original image.')
+
     st.subheader('The compressed image')
     fig, ax = plt.subplots()
     # Remove ticks from both axes
@@ -52,9 +60,6 @@ def app():
     ax.set_yticks([])
     ax.imshow(img_recolored)
     st.pyplot(fig)
-
-    #compression = round(reduced_size/orig_size, 2)
-    #print(f'image size is reduce to {compression} of the original image.')
 
 def plot_pixels(data, title, colors=None, N=1000):
     if colors is None:
