@@ -14,7 +14,7 @@ def app():
     if "original" not in st.session_state:
         st.session_state.original = []
     if "image_data" not in st.session_state:
-        st.session_state.image_data = []
+        st.session_state.original_data = []
     if "normalized_data" not in st.session_state:
         st.session_state.normalized_data = []
 
