@@ -23,10 +23,6 @@ def app():
     #convert the array to an image
     img_recolored = new_colors.reshape(normalized_data.shape)
 
-    compressed = Image.new('RGB', original.size)
-    compressed.putdata(img_recolored)
-
-
     fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
     fig.subplots_adjust(wspace=0.05)
     ax[0].imshow(original)
@@ -34,29 +30,6 @@ def app():
     ax[1].imshow(new_colors)
     ax[1].set_title('16-color image', size=16)
     st.pyplot(fig)
-   
-    width, height = original.size
-    # Get mode (e.g., RGB, RGBA) and corresponding bytes per pixel
-    mode = original.mode
-    st.write(mode)
-    bpp = {
-        '1': 1, 'L': 8, 'P': 8, 'RGB': 24, 'RGBA': 32, 'CMYK': 32, 'YCbCr': 24, 'I': 32, 'F': 32
-    }[mode]
-    # Calculate the total number of bytes in memory
-    orig_size = width * height * bpp // 8
-    st.write('original size =' + str(orig_size))
-
-    width, height = compressed.size    
-    mode = compressed.mode
-    st.write(mode)
-    bpp = {
-        '1': 1, 'L': 8, 'P': 8, 'RGB': 24, 'RGBA': 32, 'CMYK': 32, 'YCbCr': 24, 'I': 32, 'F': 32
-    }[mode]
-    reduced_size = width * height * bpp // 8
-    st.write('compressed size =' + str(reduced_size))
-
-    compression = round(reduced_size/orig_size, 2)
-    st.Write(f'image size is reduce to {compression} of the original image.')
 
     st.subheader('The compressed image')
     fig, ax = plt.subplots()
