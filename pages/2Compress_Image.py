@@ -27,7 +27,7 @@ def app():
     fig.subplots_adjust(wspace=0.05)
     ax[0].imshow(original)
     ax[0].set_title('Original Image', size = 16)
-    ax[1].imshow(new_colors)
+    ax[1].imshow(img_recolored)
     ax[1].set_title('16-color image', size=16)
     st.pyplot(fig)
 
