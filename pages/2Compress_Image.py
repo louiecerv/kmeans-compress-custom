@@ -15,6 +15,7 @@ def app():
 
     kmeans = MiniBatchKMeans(16)
     kmeans.fit(normalized_data)
+    st.subheader('Color reduction using K-Means Clustering')
 
     new_colors = kmeans.cluster_centers_[kmeans.predict(normalized_data)]
 
