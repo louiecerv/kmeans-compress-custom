@@ -8,9 +8,6 @@ from sklearn.cluster import MiniBatchKMeans
 
 # Define the Streamlit app
 def app():
-    #data is the normalized array of the original image
-    data = st.session_state.image_data
-
     original = st.session_state.original
     original_data = st.session_state.original_data
     normalized_data = st.session_state.normalized_data
