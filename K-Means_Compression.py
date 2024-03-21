@@ -9,21 +9,13 @@ import time
 # Define the Streamlit app
 def app():
 
-
-    text = """K-Mean Clustering as Image Compressor"""
-    st.subheader(text)
-
-    # Use session state to track the current form
-
-
+    st.subheader("""Image Color Reduction Using K-Mean Clustering""")
     text = """Louie F. Cervantes, M. Eng. (Information Engineering) \n\n
     CCS 229 - Intelligent Systems
     Computer Science Department
     College of Information and Communications Technology
     West Visayas State University"""
     st.text(text)
-
-    #st.image('MNIST.png', caption="Replace he image and replace this text with the description""")
 
     text = """Importing the K-means Clustering Algorithm: 
     \nfrom sklearn.cluster import MiniBatchKMeans: 
