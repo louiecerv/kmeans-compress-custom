@@ -50,7 +50,7 @@ def app():
     Visually, compression results in a less detailed but recognizable image.
     MiniBatchKMeans processes data in batches, making it efficient for large images."""
     st.write(text)
-    st.write('Click on Introduction in the sidebar to start.')  
+    st.write('Use the sidebar to start color reduction.')  
 
     
 #run the app
