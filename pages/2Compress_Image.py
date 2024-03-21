@@ -20,12 +20,11 @@ def app():
 
     fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
     fig.subplots_adjust(wspace=0.05)
-    ax[0].imshow(st.session_state.original)
+    ax[0].imshow(data)
     ax[0].set_title('Original Image', size = 16)
     ax[1].imshow(img_recolored)
     ax[1].set_title('16-color image', size=16)
     st.pyplot(fig)
-
 
     #show the compression ratio
     width, height = data.size
