@@ -21,13 +21,13 @@ def app():
     plot_pixels(normalized_data, 'Reduced color space: 16 colors', new_colors)
 
     #convert the array to an image
-    #img_recolored = new_colors.reshape(normalized_data.shape)
+    img_recolored = new_colors.reshape(original_data.shape)
 
     fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
     fig.subplots_adjust(wspace=0.05)
     ax[0].imshow(original)
     ax[0].set_title('Original Image', size = 16)
-    ax[1].imshow(new_colors)
+    ax[1].imshow(img_recolored)
     ax[1].set_title('16-color image', size=16)
     st.pyplot(fig)
 
