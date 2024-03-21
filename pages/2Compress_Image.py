@@ -13,14 +13,14 @@ def app():
     normalized_data = st.session_state.normalized_data
 
     kmeans = MiniBatchKMeans(16)
-    kmeans.fit(normalized_data)
+    kmeans.fit(original_data)
 
-    new_colors = kmeans.cluster_centers_[kmeans.predict(normalized_data)]
+    new_colors = kmeans.cluster_centers_[kmeans.predict(original_data)]
 
     #plot_pixels(data, 'Reduced color space: 16 colors', new_colors)
 
     #convert the array to an image
-    img_recolored = new_colors.reshape(normalized_data.shape)
+    img_recolored = new_colors.reshape(original_data.shape)
 
     fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
     fig.subplots_adjust(wspace=0.05)
