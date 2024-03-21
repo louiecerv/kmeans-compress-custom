@@ -33,6 +33,22 @@ def app():
     st.pyplot(fig)
 
     st.subheader('The compressed image')
+    with st.expander("Show description"):
+        text = """Fewer colors: The most prominent feature will be a significant 
+        reduction in the number of colors displayed. The image will resemble a 
+        painting with a limited palette.
+        Blockiness or Posterization: Depending on the number of clusters (k) chosen, 
+        the image might exhibit a blocky or posterized effect. Areas with 
+        subtle color variations in the original image might appear more 
+        uniform with a single dominant color from the chosen cluster.
+        Loss of detail: Fine details and smooth color gradients might be 
+        lost or appear less pronounced. The image might take on a more 
+        cartoonish or flat look.
+        Overall color representation: The dominant colors in the original 
+        image will likely be preserved, but finer color nuances 
+        will be sacrificed."""
+    st.write(text)
+    st.write('Image reduction result in some lost datils. But the original.')
     fig, ax = plt.subplots()
     # Remove ticks from both axes
     ax.set_xticks([])
