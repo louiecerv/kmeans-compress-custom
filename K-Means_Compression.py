@@ -45,7 +45,10 @@ def app():
     kmeans.predict(data): Assigning each pixel to its closest cluster centroid.
     kmeans.cluster_centers_: Using the actual colors of those centroids as the new pixel colors.
     \nVisualizing the Compressed Image:
-    plot_pixels(data, colors=new_colors, title='Reduced color space: 16 colors'): This line (presumably from a custom plotting function) displays the image using the reduced set of 16 colors. You'll likely see a slightly less detailed, but visually similar image.
+    plot_pixels(data, colors=new_colors, title='Reduced color space: 16 colors'): 
+    This line (presumably from a custom plotting function) displays the image using 
+    the reduced set of 16 colors. You'll likely see a slightly less detailed, 
+    but visually similar image.
     \nCreating a Recolored Image Array:
     flower_recolored = new_colors.reshape(flower.shape): This line 
     reshapes the array of new colors to match the original image's
