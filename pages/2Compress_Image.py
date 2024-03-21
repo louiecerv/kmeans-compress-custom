@@ -44,7 +44,8 @@ def app():
     orig_size = width * height * bpp // 8
     st.write('original size =' + str(orig_size))
     
-    width, height = reduced_img.size
+    reduced_img = reduced_img.convert('RGB')
+    width, height = reduced_img.size    
     mode = reduced_img.mode
     st.write(mode)
     bpp = {
